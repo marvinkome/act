@@ -1,7 +1,7 @@
 "use strict";
 
-/** @jsx Didact.createElement */
-var Didact = importDidact();
-var mainElement = Didact.createElement("div", null, Didact.createElement("h1", null, "This is didact"), Didact.createElement("p", null, "using jsx!!!"));
+/** @jsx Act.createElement */
+var Act = importAct();
+var mainElement = Act.createElement("div", null, Act.createElement("h1", null, "This is didact"), Act.createElement("p", null, "using jsx!!!"));
 var domRoot = document.getElementById("root");
-Didact.render(mainElement(), domRoot);
+Act.render(mainElement, domRoot);

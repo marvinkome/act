@@ -1,5 +1,5 @@
-/** @jsx Didact.createElement */
-const Didact = importDidact();
+/** @jsx Act.createElement */
+const Act = importAct();
 
 const mainElement = (
   <div>
@@ -9,4 +9,4 @@ const mainElement = (
 );
 
 const domRoot = document.getElementById("root");
-Didact.render(mainElement(), domRoot);
+Act.render(mainElement, domRoot);

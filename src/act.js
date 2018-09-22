@@ -9,8 +9,6 @@ function render(element, root) {
     ? document.createTextNode("")
     : document.createElement(type);
 
-  console.log({ type, props });
-
   // add listeners
   const isListener = name => name.startsWith("on");
   Object.keys(props)
@@ -49,7 +47,7 @@ function createTextElement(value) {
   return createElement(TEXT_ELEMENT, { nodeValue: value });
 }
 
-function importDidact() {
+function importAct() {
   return {
     createElement,
     createTextElement,
