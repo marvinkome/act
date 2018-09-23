@@ -1,5 +1,11 @@
 const { Component } = importAct();
 
+class LikeBtn extends Component {
+  render() {
+    return <button onClick={this.props.like}>{this.props.children}</button>;
+  }
+}
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +29,7 @@ class Main extends Component {
       <div>
         <h1>Hello {name}</h1>
         <p>We like you {likes} times</p>
-        <button onClick={() => this.like()}>like it</button>
+        <LikeBtn like={() => this.like()}>like me</LikeBtn>
       </div>
     );
   }
