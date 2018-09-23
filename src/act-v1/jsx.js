@@ -1,5 +1,10 @@
-// jsx implementation
-function createElement(type, config, ...args) {
+/**
+ * creates element from jsx
+ * @param {*} type
+ * @param {*} config
+ * @param {*} args
+ */
+export function createElement(type, config, ...args) {
   const props = Object.assign({}, config);
   const hasChildren = args.length > 0;
   const rawChildren = hasChildren ? [].concat(...args) : [];
@@ -10,11 +15,20 @@ function createElement(type, config, ...args) {
   return { type, props };
 }
 
-function createTextElement(value) {
+/**
+ * create text element from jsx
+ * @param {*} value
+ */
+export function createTextElement(value) {
   return createElement("TEXT_ELEMENT", { nodeValue: value });
 }
 
-function createPublicInstance(element, internalInst) {
+/**
+ * Create public instance of class components
+ * @param {*} element
+ * @param {*} internalInst
+ */
+export function createPublicInstance(element, internalInst) {
   const { type, props } = element;
   const publicInst = new type(props);
   publicInst.__internalInstance = internalInst;

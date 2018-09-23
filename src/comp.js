@@ -1,12 +1,12 @@
-const { Component } = importAct();
+import Act from "./act";
 
-class LikeBtn extends Component {
+class LikeBtn extends Act.Component {
   render() {
     return <button onClick={this.props.like}>{this.props.children}</button>;
   }
 }
 
-class Main extends Component {
+export default class Main extends Act.Component {
   constructor(props) {
     super(props);
 
@@ -27,8 +27,7 @@ class Main extends Component {
 
     return (
       <div>
-        <h1>Hello {name}</h1>
-        <p>We like you {likes} times</p>
+        <p>I like you {likes} times</p>
         <LikeBtn like={() => this.like()}>like me</LikeBtn>
       </div>
     );

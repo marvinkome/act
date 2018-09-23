@@ -1,14 +1,15 @@
+import { createPublicInstance } from "./jsx";
+
 let rootInstance = null;
 
-// rendering
-function render(element, container) {
+export function render(element, container) {
   const prevInstance = rootInstance;
   const nextInstance = reconcile(container, prevInstance, element);
   rootInstance = nextInstance;
 }
 
 // reconciling
-function reconcile(parent, instance, element) {
+export function reconcile(parent, instance, element) {
   if (instance == null) {
     // check if it's a new node instance
     // add the new item to dom
@@ -52,7 +53,7 @@ function reconcile(parent, instance, element) {
   }
 }
 
-function reconcileChildren(instance, element) {
+export function reconcileChildren(instance, element) {
   const dom = instance.dom;
   const childInstances = instance.childInstances;
   const nextChildElements = element.props.children || [];
@@ -70,7 +71,7 @@ function reconcileChildren(instance, element) {
 }
 
 // initiate a component
-function instanciate(element) {
+export function instanciate(element) {
   const { type, props } = element;
   const isDomElem = typeof type === "string";
 
@@ -118,7 +119,7 @@ function instanciate(element) {
 }
 
 // updating
-function updateDomProps(dom, prevProps, newProps) {
+export function updateDomProps(dom, prevProps, newProps) {
   const isEvent = name => name.startsWith("on");
   const isAttribute = name => !isEvent(name) && name !== "children";
 
