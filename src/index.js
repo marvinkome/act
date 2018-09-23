@@ -1,5 +1,6 @@
-/** @jsx Act.createElement */
-const Act = importAct();
+/** @jsx createElement */
+const { render, createElement } = importAct();
+const root = document.getElementById("root");
 
 const mainElement = (
   <div>
@@ -8,5 +9,12 @@ const mainElement = (
   </div>
 );
 
-const domRoot = document.getElementById("root");
-Act.render(mainElement, domRoot);
+const tick = () => {
+  const date = new Date().toLocaleTimeString();
+  const clock = <p>{date}</p>;
+  render(clock, root);
+};
+
+setInterval(tick, 1000);
+
+// render(mainElement, domRoot);

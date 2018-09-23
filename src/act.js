@@ -29,7 +29,12 @@ function render(element, root) {
   const children = props.children || [];
   children.forEach(childElement => render(childElement, dom));
 
-  root.appendChild(dom);
+  // append or replace dom
+  if (!root.lastChild) {
+    root.appendChild(dom);
+  } else {
+    root.replaceChild(dom, root.lastChild);
+  }
 }
 
 function createElement(type, config, ...args) {
