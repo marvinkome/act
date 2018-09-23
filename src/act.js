@@ -2,6 +2,7 @@
 function importAct() {
   return {
     createElement,
-    render
+    render,
+    Component
   };
 }

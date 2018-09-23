@@ -13,3 +13,10 @@ function createElement(type, config, ...args) {
 function createTextElement(value) {
   return createElement("TEXT_ELEMENT", { nodeValue: value });
 }
+
+function createPublicInstance(element, internalInst) {
+  const { type, props } = element;
+  const publicInst = new type(props);
+  publicInst.__internalInstance = internalInst;
+  return publicInst;
+}

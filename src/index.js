@@ -1,20 +1,34 @@
 /** @jsx createElement */
-const { render, createElement } = importAct();
+const { render, createElement, Component } = importAct();
 const root = document.getElementById("root");
 
-const mainElement = date => (
-  <div>
-    <h1>Trying reconcilation</h1>
-    <p>{date}</p>
-  </div>
-);
+class Main extends Component {
+  constructor(props) {
+    super(props);
 
-const tick = () => {
-  const date = new Date().toLocaleTimeString();
-  const clock = mainElement(date);
-  render(clock, root);
-};
+    this.state = {
+      likes: 0
+    };
+  }
 
-setInterval(tick, 1000);
+  like() {
+    this.setState({
+      likes: this.state.likes + 1
+    });
+  }
 
-// render(mainElement, root);
+  render() {
+    const { name } = this.props;
+    const { likes } = this.state;
+
+    return (
+      <div>
+        <h1>Hello {name}</h1>
+        <p>We like you {likes} times</p>
+        <button onClick={() => this.like()}>like it</button>
+      </div>
+    );
+  }
+}
+
+render(<Main name="Act" />, root);
